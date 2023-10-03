@@ -12,45 +12,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import FinancaPessoal.Api.model.User;
-import FinancaPessoal.Api.service.UserService;
-
-
+import FinancaPessoal.Api.model.Transaction;
+import FinancaPessoal.Api.service.TransactionService;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
-	
+@RequestMapping("/transaction")
+public class TransactionController {
+
 	@Autowired
-	private UserService userService;
+	private TransactionService transactionService;
 	
 	@PostMapping
-	public void postUser(@RequestBody User user) {
-	userService.save(user);
+	public void postAccount(@RequestBody Transaction transaction) {
+		transactionService.save(transaction);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deleteUser(@PathVariable("id") Integer id) {
-		 userService.remove(id);
+		transactionService.remove(id);
 	}
 	
-	@GetMapping
-    public List<User> getAll(){
-        return (List<User>) userService.findAll();
+	@GetMapping("/{id}")
+    public Transaction getOneUser(@PathVariable("id") Long id){
+        return transactionService.findById(id);
     }
 	
-
-    @GetMapping("/{id}")
-    public User getOneUser(@PathVariable("id") Long id){
-        return userService.findById(id);
+	@GetMapping()
+    public List<Transaction> getOneUser(){
+        return transactionService.findAll();
     }
 	
-    @PutMapping
-    public void atualizarSocio(@RequestBody User user){
-        userService.put(user.getId(), user);
+	
+	@PutMapping
+    public void atualizarAccount(@RequestBody Transaction transaction){
+		transactionService.put(transaction.getId(), transaction);
     }
 	
-
-	
-
 }

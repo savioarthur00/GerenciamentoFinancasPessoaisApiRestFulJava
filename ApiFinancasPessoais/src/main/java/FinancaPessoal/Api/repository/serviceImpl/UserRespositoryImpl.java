@@ -1,7 +1,6 @@
 package FinancaPessoal.Api.repository.serviceImpl;
 
-import static FinancaPessoal.Api.handler.MessageHandler.passwordRole;
-import static FinancaPessoal.Api.handler.MessageHandler.userNameRole;
+import static FinancaPessoal.Api.handler.MessageHandler.mensagemObrigatoria;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,10 +32,10 @@ public class UserRespositoryImpl implements UserService {
 	public void save(User user) {
 		
 		if(user.getUsername()==null) {
-			throw new BusinessException(userNameRole());
+			throw new BusinessException(mensagemObrigatoria("username"));
 		}
 		if(user.getPassword()==null) {
-			throw new BusinessException(passwordRole());
+			throw new BusinessException(mensagemObrigatoria("senha"));
 		}
 		userRepository.save(user);
 		

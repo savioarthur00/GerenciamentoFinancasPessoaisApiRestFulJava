@@ -1,18 +1,19 @@
 package FinancaPessoal.Api.repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import FinancaPessoal.Api.model.Account;
 
-public interface AccountRepository {
+
+public interface AccountRepository extends JpaRepository<Account, Integer>  {
 	
 	Account findbyId(Long id);
 	
-	void save (Account account);
+	Account save (Account account);
 	
 	void delete (Account account);
 	
-	List<Account> findAll();
+	
 	
 
 }
