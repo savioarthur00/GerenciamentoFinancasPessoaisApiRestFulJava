@@ -1,5 +1,7 @@
 package FinancaPessoal.Api.model;
 
+import static FinancaPessoal.Api.handler.MessageHandler.saldoInsuficiente;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import FinancaPessoal.Api.handler.BusinessException;
+
 
 @Entity(name="tb_account")
 public class Account {
@@ -22,6 +27,26 @@ public class Account {
 	@OneToMany
 	private List<Transaction> transactions;
 
+	
+	
+	
+	public void deposit(double valor) {
+		this.balance += valor;
+		Transaction transaction = new Transaction("Depósito na conta", valor);
+		transactions.add(transaction);
+	}
+	
+	public void withdraw(double valor) {
+		if (valor <= balance) {
+	        
+	        this.balance -= valor;
+	        
+	        Transaction transaction = new Transaction("Saque da conta",valor);
+	        transactions.add(transaction);
+	    }else {
+	    	throw new BusinessException(saldoInsuficiente());
+	    }
+	}
 	
 	
 	

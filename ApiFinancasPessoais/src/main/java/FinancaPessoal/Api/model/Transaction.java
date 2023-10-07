@@ -19,6 +19,12 @@ public class Transaction {
 	
 	
 
+	public Transaction(String description, double amount) {
+		super();
+		this.description = description;
+		this.amount = amount;
+	}
+
 	public String getDescription() {
 		return description;
 	}

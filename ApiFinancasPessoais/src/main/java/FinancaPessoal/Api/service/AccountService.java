@@ -6,9 +6,7 @@ import FinancaPessoal.Api.model.Account;
 
 @Service
 public interface AccountService {
-	
-	
-	
+			
 	Account findById(Long id);
 	
 	void save(Account account);
@@ -18,5 +16,6 @@ public interface AccountService {
 	void remove(Integer id);
 	
 	
+		
 
 }

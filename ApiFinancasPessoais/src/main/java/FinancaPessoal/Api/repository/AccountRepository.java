@@ -7,7 +7,7 @@ import FinancaPessoal.Api.model.Account;
 
 public interface AccountRepository extends JpaRepository<Account, Integer>  {
 	
-	Account findbyId(Long id);
+	Account findById(Long id);
 	
 	Account save (Account account);
 	

@@ -11,33 +11,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import FinancaPessoal.Api.model.Account;
-import FinancaPessoal.Api.service.AccountService;
+import FinancaPessoal.Api.repository.AccountRepository;
 
 @RestController
-@RequestMapping("/account")
+@RequestMapping("/api/account")
 public class AccountController {
-
+	
 	@Autowired
-	private AccountService accountService;
+	private AccountRepository accountRepository;
 	
 	@PostMapping
 	public void postAccount(@RequestBody Account account) {
-		accountService.save(account);
+		accountRepository.save(account);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deleteUser(@PathVariable("id") Integer id) {
-		accountService.remove(id);
+		accountRepository.deleteById(id);
 	}
 	
 	@GetMapping("/{id}")
     public Account getOneUser(@PathVariable("id") Long id){
-        return accountService.findById(id);
+        return accountRepository.findById(id);
     }
 	
 	@PutMapping
     public void atualizarAccount(@RequestBody Account account){
-        accountService.put(account.getId(), account);
+		accountRepository.save(account);
     }
+	
+	
 	
 }

@@ -13,39 +13,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import FinancaPessoal.Api.model.Transaction;
-import FinancaPessoal.Api.service.TransactionService;
+import FinancaPessoal.Api.repository.TransactionRepository;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/api/transaction")
 public class TransactionController {
 
 	@Autowired
-	private TransactionService transactionService;
+	private TransactionRepository transactionRepository;
 	
 	@PostMapping
 	public void postAccount(@RequestBody Transaction transaction) {
-		transactionService.save(transaction);
+		transactionRepository.save(transaction);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deleteUser(@PathVariable("id") Integer id) {
-		transactionService.remove(id);
+		transactionRepository.deleteById(id);
 	}
 	
 	@GetMapping("/{id}")
     public Transaction getOneUser(@PathVariable("id") Long id){
-        return transactionService.findById(id);
+        return transactionRepository.findById(id);
     }
 	
 	@GetMapping()
     public List<Transaction> getOneUser(){
-        return transactionService.findAll();
+        return transactionRepository.findAll();
     }
 	
 	
 	@PutMapping
     public void atualizarAccount(@RequestBody Transaction transaction){
-		transactionService.put(transaction.getId(), transaction);
+		transactionRepository.save(transaction);
     }
 	
 }

@@ -7,4 +7,9 @@ public abstract class  MessageHandler {
 		return "O campo " + campo + " é obrigátorio.";
 	}
 	
+	public static String saldoInsuficiente() {
+		return "Seu saldo é insuficiente";
+		
+	}
+	
 }
