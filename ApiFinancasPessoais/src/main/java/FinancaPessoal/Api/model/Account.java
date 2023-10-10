@@ -18,7 +18,7 @@ public class Account {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	private String accountname;
 	
@@ -74,9 +74,10 @@ public class Account {
 		this.transactions = transactions;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
+
 	
 	
 	

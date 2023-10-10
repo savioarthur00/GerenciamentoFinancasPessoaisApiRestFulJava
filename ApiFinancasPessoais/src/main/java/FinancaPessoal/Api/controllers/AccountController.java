@@ -26,7 +26,7 @@ public class AccountController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteUser(@PathVariable("id") Integer id) {
+	public void deleteAccount(@PathVariable("id") Integer id) {
 		accountRepository.deleteById(id);
 	}
 	
@@ -39,6 +39,7 @@ public class AccountController {
     public void atualizarAccount(@RequestBody Account account){
 		accountRepository.save(account);
     }
+	
 	
 	
 	

@@ -2,6 +2,8 @@ package FinancaPessoal.Api.repository.serviceImpl;
 
 import static FinancaPessoal.Api.handler.MessageHandler.mensagemObrigatoria;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +19,7 @@ public class AccountImpl implements AccountService {
 	private AccountRepository accountRepository;
 
 	@Override
-	public Account findById(Long id) {
+	public Optional<Account> findById(Integer id) {
 		return accountRepository.findById(id);
 	}
 
@@ -29,22 +31,9 @@ public class AccountImpl implements AccountService {
 		accountRepository.save(account);
 		
 	}
-
+	
 	@Override
-	public void put(Long id, Account account) {
-		Account accountEncontrada = accountRepository.findById(id);
-		
-		if(accountEncontrada != null) {
-			accountEncontrada.setAccountname(account.getAccountname());
-			accountEncontrada.setBalance(account.getBalance());
-			accountEncontrada.setTransactions(account.getTransactions());
-			accountRepository.save(accountEncontrada);
-		}
-		
-	}
-
-	@Override
-	public void remove(Integer id) {
+	public void removeById(Integer id) {
 		accountRepository.deleteById(id);
 		
 	}

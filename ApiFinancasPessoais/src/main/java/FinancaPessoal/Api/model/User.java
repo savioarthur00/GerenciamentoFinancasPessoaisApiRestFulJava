@@ -15,7 +15,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	private String username;
 	
@@ -47,9 +47,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
+	
 	
 	
 	

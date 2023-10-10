@@ -1,6 +1,7 @@
 package FinancaPessoal.Api.repository.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,7 @@ public class TransactionImpl implements TransactionService{
 	private TransactionRepository transactionRepository;
 	
 	@Override
-	public Transaction findById(Long id) {
+	public Optional<Transaction> findById(Integer id) {
 		return transactionRepository.findById(id);
 	}
 
@@ -24,21 +25,9 @@ public class TransactionImpl implements TransactionService{
 		transactionRepository.save(transaction);
 		
 	}
-
+	
 	@Override
-	public void put(Long id, Transaction transaction) {
-		Transaction transactionEncontrado =  transactionRepository.findById(id);
-		
-		if(transactionEncontrado != null) {
-			transactionEncontrado.setAmount(transaction.getAmount());
-			transactionEncontrado.setDescription(transaction.getDescription());
-			transactionRepository.save(transactionEncontrado);
-		}
-		
-	}
-
-	@Override
-	public void remove(Integer id) {
+	public void removeById(Integer id) {
 		transactionRepository.deleteById(id);		
 	}
 

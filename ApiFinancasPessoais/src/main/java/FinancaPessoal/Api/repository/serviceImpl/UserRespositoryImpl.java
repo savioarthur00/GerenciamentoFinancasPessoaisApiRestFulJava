@@ -2,6 +2,8 @@ package FinancaPessoal.Api.repository.serviceImpl;
 
 import static FinancaPessoal.Api.handler.MessageHandler.mensagemObrigatoria;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,7 +25,7 @@ public class UserRespositoryImpl implements UserService {
 	}
 
 	@Override
-	public User findById(Long id) {
+	public Optional<User> findById(Integer id) {
 		
 		return userRepository.findById(id);
 	}
@@ -41,23 +43,17 @@ public class UserRespositoryImpl implements UserService {
 		
 	}
 
+	
+	
 	@Override
-	public void put(Long id, User user) {
-		User userBD = userRepository.findById(id);
-		
-		if(userBD != null) {
-			userBD.setAccounts(user.getAccounts());
-			userBD.setUsername(user.getUsername());
-			userBD.setPassword(user.getPassword());
-			userRepository.save(userBD);
-		}
+	public void removeById(Integer id) {
+		userRepository.deleteById(id);
 		
 	}
 
-	@Override
-	public void remove(Integer id) {
-		userRepository.deleteById(id);
-	}
+	
+
+	
 
 	
 

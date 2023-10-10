@@ -10,7 +10,7 @@ public class Transaction {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
 	private String description;
 	
@@ -41,9 +41,11 @@ public class Transaction {
 		this.amount = amount;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
+
+	
 	
 	
 	

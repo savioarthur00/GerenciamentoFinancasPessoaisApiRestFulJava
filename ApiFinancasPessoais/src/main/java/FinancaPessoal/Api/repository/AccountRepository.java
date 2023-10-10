@@ -11,7 +11,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer>  {
 	
 	Account save (Account account);
 	
-	void delete (Account account);
+	void deleteById (Account account);
 	
 	
 	

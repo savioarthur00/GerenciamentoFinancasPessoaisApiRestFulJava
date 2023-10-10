@@ -1,6 +1,7 @@
 package FinancaPessoal.Api.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +34,7 @@ public class TransactionController {
 	}
 	
 	@GetMapping("/{id}")
-    public Transaction getOneUser(@PathVariable("id") Long id){
+    public Optional<Transaction> getOneUser(@PathVariable("id") Integer id){
         return transactionRepository.findById(id);
     }
 	

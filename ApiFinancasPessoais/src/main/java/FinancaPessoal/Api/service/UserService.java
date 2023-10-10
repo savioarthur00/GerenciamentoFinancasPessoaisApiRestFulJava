@@ -1,5 +1,7 @@
 package FinancaPessoal.Api.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import FinancaPessoal.Api.model.User;
@@ -11,13 +13,11 @@ public interface UserService {
 	
 	Iterable<User> findAll();
 	
-	User findById(Long id);
+	Optional<User> findById(Integer id);
 	
 	void save(User user);
 	
-	void put(Long id,User user);
-	
-	void remove(Integer id);
+	void removeById(Integer id);
 	
 
 }

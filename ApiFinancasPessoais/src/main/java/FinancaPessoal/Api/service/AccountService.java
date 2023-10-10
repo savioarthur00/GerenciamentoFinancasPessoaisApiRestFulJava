@@ -1,5 +1,7 @@
 package FinancaPessoal.Api.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import FinancaPessoal.Api.model.Account;
@@ -7,13 +9,11 @@ import FinancaPessoal.Api.model.Account;
 @Service
 public interface AccountService {
 			
-	Account findById(Long id);
+	Optional<Account> findById(Integer id);
 	
 	void save(Account account);
-	
-	void put(Long id, Account account);
-	
-	void remove(Integer id);
+		
+	void removeById(Integer id);
 	
 	
 		
