@@ -23,6 +23,13 @@ O aplicativo de Finanças Pessoais é uma ferramenta de gerenciamento financeiro
 - Maven
 - Banco de Dados (por exemplo, MySQL)
 
+## Tecnologias Utilizadas
+
+- Java
+-Spring Boot
+-MySQL (ou outro banco de dados à sua escolha)
+
+
 # Diagrama de classe 
 ```mermaid
 classDiagram
