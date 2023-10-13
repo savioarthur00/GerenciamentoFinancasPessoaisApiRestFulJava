@@ -27,12 +27,6 @@ O aplicativo de Finanças Pessoais é uma ferramenta de gerenciamento financeiro
 
 Siga as etapas abaixo para configurar e executar o aplicativo:
 
-### Clonar o Repositório
-
-```shell
-git clone https://github.com/seu-usuario/financas-pessoais.git
-cd financas-pessoais
-
 
 # Diagrama de classe 
 ```mermaid
