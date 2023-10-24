@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import FinancaPessoal.Api.model.User;
 import FinancaPessoal.Api.repository.UserRepository;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
 
 
 
@@ -31,8 +30,8 @@ public class UserController {
 	private UserRepository userService;
 	
 	@PostMapping
-	@ApiResponses(value = { 
-            @ApiResponse(responseCode = "200", description = "Operation successful")
+	@io.swagger.annotations.ApiResponses(value = { 
+			@io.swagger.annotations.ApiResponse( code = 200, message = "Operation successful")
     })
 	public void postUser(@RequestBody User user) {
 			userService.save(user);
@@ -40,16 +39,16 @@ public class UserController {
 	}	
 
 	@DeleteMapping("/{id}")
-	@ApiResponses(value = { 
-            @ApiResponse(responseCode = "200", description = "Operation successful")
+	@io.swagger.annotations.ApiResponses(value = { 
+			@io.swagger.annotations.ApiResponse( code = 200, message = "Operation successful")
     })
 	public void deleteUser(@PathVariable("id") Integer id) {
 		 userService.deleteById(id);
 	}
 	
 	@GetMapping
-	@ApiResponses(value = { 
-            @ApiResponse(responseCode = "200", description = "Operation successful")
+	@io.swagger.annotations.ApiResponses(value = { 
+			@io.swagger.annotations.ApiResponse( code = 200, message = "Operation successful")
     })
     public List<User> getAll(){
         return (List<User>) userService.findAll();
@@ -57,10 +56,11 @@ public class UserController {
 	
 
     @GetMapping("/{id}")
-    @ApiResponses(value = { 
-            @ApiResponse(responseCode = "200", description = "Operation successful"),
-            @ApiResponse(responseCode = "404", description = "User not found")
+    @io.swagger.annotations.ApiResponses(value = { 
+			@io.swagger.annotations.ApiResponse( code = 200, message = "Operation successful"),
+			@io.swagger.annotations.ApiResponse( code = 400, message = "User not found")
     })
+   
     public Optional<User> getOneUser(@PathVariable("id") Integer id){
         return userService.findById(id);
     }

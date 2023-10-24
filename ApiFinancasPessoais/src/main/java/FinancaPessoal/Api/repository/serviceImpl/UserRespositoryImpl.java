@@ -5,6 +5,7 @@ import static FinancaPessoal.Api.handler.MessageHandler.mensagemObrigatoria;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import FinancaPessoal.Api.handler.BusinessException;
@@ -17,6 +18,9 @@ public class UserRespositoryImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+    private PasswordEncoder encoder;
 	
 		
 	@Override
@@ -39,6 +43,8 @@ public class UserRespositoryImpl implements UserService {
 		if(user.getPassword()==null) {
 			throw new BusinessException(mensagemObrigatoria("senha"));
 		}
+		String pass = user.getPassword();
+    	user.setPassword(encoder.encode(pass));
 		userRepository.save(user);
 		
 	}
