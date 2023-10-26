@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import FinancaPessoal.Api.model.User;
 import FinancaPessoal.Api.repository.UserRepository;
+import FinancaPessoal.Api.service.UserService;
 
 
 
@@ -27,7 +28,7 @@ import FinancaPessoal.Api.repository.UserRepository;
 public class UserController {
 	
 	@Autowired
-	private UserRepository userService;
+	private UserService userService;
 	
 	@PostMapping
 	@io.swagger.annotations.ApiResponses(value = { 

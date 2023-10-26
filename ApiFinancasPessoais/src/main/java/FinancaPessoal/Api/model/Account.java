@@ -24,6 +24,7 @@ public class Account {
 	
 	private double balance;
 	
+		
 	@OneToMany
 	private List<Transaction> transactions;
 

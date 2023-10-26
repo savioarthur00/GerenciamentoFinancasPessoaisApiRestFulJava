@@ -41,13 +41,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(SWAGGER_WHITELIST).permitAll()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/login").permitAll()
-                .antMatchers(HttpMethod.POST,"/users").permitAll()
+                .antMatchers(HttpMethod.POST,"/users").permitAll()                                        
                 .antMatchers(HttpMethod.GET,"/users").hasAnyRole("MANAGERS")
                 .antMatchers("/managers").hasAnyRole("MANAGERS")
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
+    
+  
     @Bean //HABILITANDO ACESSAR O H2-DATABSE NA WEB
     public ServletRegistrationBean h2servletRegistration(){
         ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());

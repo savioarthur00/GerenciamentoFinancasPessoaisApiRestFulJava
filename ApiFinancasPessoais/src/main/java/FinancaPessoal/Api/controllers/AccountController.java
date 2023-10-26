@@ -14,7 +14,7 @@ import FinancaPessoal.Api.model.Account;
 import FinancaPessoal.Api.repository.AccountRepository;
 
 @RestController
-@RequestMapping("/api/account")
+@RequestMapping("/account")
 public class AccountController {
 	
 	@Autowired

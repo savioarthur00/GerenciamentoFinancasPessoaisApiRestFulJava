@@ -9,6 +9,7 @@ public interface CrudService<ID, T> {
     List<T> findAll();
     Optional<Account> findById(ID id);
     T create(T entity);
-    T update(ID id, T entity);
+    T update(T entity);
     void delete(ID id);
+	
 }
